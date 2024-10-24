@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elenco Nomi</title>
+    <link rel="stylesheet" href="styleXML.css"> <!-- Collega il file CSS qui -->
+</head>
+<body>
+    <table id="demo" border="1">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Cognome</th>
+                <th>Età</th>
+                <th>Indirizzo</th>
+                <th>Città</th>
+                <th>Telefono 1</th>
+                <th>Telefono 2</th>
+                <th>Sport 1</th>
+                <th>Sport 2</th>
+                <th>Sport 3</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script>
+        var xmlhttp = new XMLHttpRequest();
+
+        xmlhttp.open("GET", "https://ixosia.github.io/Anagrafica/sium.json", true);
+        xmlhttp.send();
+
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4) {
+                if (this.status == 200) {
+                    var myObj = JSON.parse(this.responseText);
+                    var stampa = "";
+
+                    myObj.nomi.forEach(function(nomi) {
+                        var telefoni = nomi.telefono;
+                        var sport = nomi.sport;
+
+                        // Recupera i numeri di telefono
+                        var telefono1 = telefoni[0] ? telefoni[0].numero : '';
+                        var telefono2 = telefoni[1] ? telefoni[1].numero : '';
+
+                        // Recupera gli sport
+                        var sport1 = sport[0] || '';
+                        var sport2 = sport[1] || '';
+                        var sport3 = sport[2] || '';
+
+                        stampa += "<tr>";
+                        stampa += "<td>" + nomi.nome + "</td>";
+                        stampa += "<td>" + nomi.cognome + "</td>";
+                        stampa += "<td>" + nomi.età + "</td>";
+                        stampa += "<td>" + nomi.indirizzo + "</td>";
+                        stampa += "<td>" + nomi.città + "</td>";
+                        stampa += "<td>" + telefono1 + "</td>";
+                        stampa += "<td>" + telefono2 + "</td>";
+                        stampa += "<td>" + sport1 + "</td>";
+                        stampa += "<td>" + sport2 + "</td>";
+                        stampa += "<td>" + sport3 + "</td>";
+                        stampa += "</tr>";
+                    });
+
+                    document.querySelector("#demo tbody").innerHTML = stampa;
+                } else {
+                    console.error("Errore nella richiesta: " + this.status);
+                }
+            }
+        };
+    </script>
+</body>
+</html>
