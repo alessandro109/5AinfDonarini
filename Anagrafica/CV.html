@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curriculum</title>
+    <style>
+        #contenutoCV {
+            margin-top: 20px;
+        }
+        img {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+    <script>
+        
+        function caricaDatiCV(indice) {
+            var file = new XMLHttpRequest();
+            file.open("GET", "https://raw.githubusercontent.com/Ixosia/5Ainf_MaioDaniele/refs/heads/main/Anagrafica/curriculum.json", true);
+            file.send();
+            file.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    var jsonDoc = JSON.parse(file.responseText);
+                    mostraInfoCV(jsonDoc, indice);
+                }
+            };
+        }
+
+        function mostraInfoCV(ogg, indice) {
+            let nominativo = document.createElement("h1");
+            nominativo.appendChild(document.createTextNode(ogg.Nominativi[indice].Nominativo));
+
+            let immagine = document.createElement("img");
+            immagine.src = ogg.Immagini[indice].Immagine || "";
+            document.getElementById("intestazione").appendChild(immagine);
+            document.getElementById("intestazione").appendChild(nominativo);
+
+            let titoli = ["Posizioni", "Esperienza", "Descrizione"];
+            let contenuti = [ogg.Posizioni[indice].Posizione, ogg.Esperienze[indice].Esperienza, ogg.Descrizioni[indice].Descrizione];
+            titoli.forEach((titolo, i) => {
+                let tit = document.createElement("h2");
+                tit.appendChild(document.createTextNode(titolo));
+                document.getElementById("contenutoCV").appendChild(tit);
+
+                let par = document.createElement("p");
+                par.appendChild(document.createTextNode(contenuti[i]));
+                document.getElementById("contenutoCV").appendChild(par);
+            });
+        }
+        document.addEventListener("DOMContentLoaded", function() {
+            let indiceCV = localStorage.getItem("Indice");
+            if (indiceCV !== null) caricaDatiCV(indiceCV);
+        });
+
+        
+    </script>
+</head>
+<body>
+    <div id="intestazione"></div>
+    <div id="contenutoCV"></div>
+</body>
+</html>
