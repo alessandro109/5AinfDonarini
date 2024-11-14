@@ -17,7 +17,7 @@
         
         function caricaDatiCV(indice) {
             var file = new XMLHttpRequest();
-            file.open("GET", "https://raw.githubusercontent.com/Ixosia/5Ainf_MaioDaniele/refs/heads/main/Anagrafica/curriculum.json", true);
+            file.open("GET", "https://raw.githubusercontent.com/alessandro109/Tabella/refs/heads/main/curriculum.json", true);
             file.send();
             file.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
