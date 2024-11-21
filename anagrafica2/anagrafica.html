@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anagrafica e Curriculum</title>
+    <style>
+        .immagineProfilo {
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+        }
+        #risForm {
+            margin-top: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+    </style>
+    <script>
+        var file = new XMLHttpRequest();
+            file.open("GET", "https://raw.githubusercontent.com/Ixosia/5Ainf_MaioDaniele/refs/heads/main/Anagrafica/anagrafica.json", true);
+            file.send();
+            file.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    var jsonDoc = JSON.parse(file.responseText);
+                    mostraInfo(jsonDoc);
+                    
+                    document.getElementById("formIngr").style.visibility = "hidden";
+                    document.getElementById("risForm").style.visibility = "visible";
+                }
+            };
+        
+        function mostraInfo(File) {
+            const tabella = document.createElement("table");
+            const colonnaIndici = ["Immagine", "Nome", "Cognome", "Età", "Indirizzo", "Città", "Telefono 1", "Telefono 2"];
+            const colonnaTitoli = document.createElement("tr");
+
+
+            colonnaIndici.forEach(indice => {
+                const th = document.createElement("th");
+                th.textContent = indice;
+                colonnaTitoli.appendChild(th);
+            });
+            tabella.appendChild(colonnaTitoli);
+
+         
+            File.nomi.forEach((persona, i) => {
+                const riga = document.createElement("tr");
+
+              
+                const cellaImg = document.createElement("td");
+                const img = document.createElement("img");
+                img.src = persona.thumb;
+                img.alt = `Foto di ${persona.nome}`;
+                img.classList.add("immagineProfilo");
+                img.addEventListener("click", () => {
+                    localStorage.setItem("Indice", i);
+                    window.location.href = "Cv.html"; 
+                });
+                cellaImg.appendChild(img);
+
+              
+                const cellaNome = creaCella(persona.nome);
+                const cellaCognome = creaCella(persona.cognome);
+                const cellaEta = creaCella(persona.età);
+                const cellaIndirizzo = creaCella(persona.indirizzo);
+                const cellaCitta = creaCella(persona.città);
+                const cellaTelefono1 = creaCella(persona.telefono[0]?.numero || "Non disponibile");
+                const cellaTelefono2 = creaCella(persona.telefono[1]?.numero || "Non disponibile");
+
+  
+                riga.appendChild(cellaImg);
+                riga.appendChild(cellaNome);
+                riga.appendChild(cellaCognome);
+                riga.appendChild(cellaEta);
+                riga.appendChild(cellaIndirizzo);
+                riga.appendChild(cellaCitta);
+                riga.appendChild(cellaTelefono1);
+                riga.appendChild(cellaTelefono2);
+
+      
+                tabella.appendChild(riga);
+            });
+
+   
+            document.getElementById("stringaJSON").appendChild(tabella);
+        }
+
+      
+        function creaCella(contenuto) {
+            const cella = document.createElement("td");
+            cella.textContent = contenuto;
+            return cella;
+        }
+    </script>
+</head>
+<body>
+    <div id="risForm">
+        <div id="stringaJSON"></div>
+    </div>
+</body>
+</html>
