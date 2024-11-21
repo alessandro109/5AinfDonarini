@@ -1,0 +1,24 @@
+{
+    "DatiPersonali": {
+      "Nome": "Mario",
+      "Cognome": "Rossi",
+      "Indirizzo": "Via Colera 3",
+      "Città": "Garbagnate Milanese",
+      "Telefono": "3125673456",
+      "Email": "mario.rossi@example.com",
+      "Immagine": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXZ6Vw-Br-RRvMstTlTqbeGXw4PNepXRrTzg&s"
+    },
+    "Esperienze": [
+      "Lavoro come sviluppatore presso XYZ S.r.l. (2020 - presente)",
+      "Stage presso ABC Studio (2018 - 2020)"
+    ],
+    "Formazione": [
+      "Diploma di Maturità Scientifica, Liceo Galileo Galilei (2018)",
+      "Corso di Web Development, Accademia del Codice (2019)"
+    ],
+    "Competenze": [
+      "Competenze informatiche: HTML, CSS, JavaScript, Python",
+      "Lingue straniere: Inglese (C1), Francese (B2)"
+    ]
+  }
+  

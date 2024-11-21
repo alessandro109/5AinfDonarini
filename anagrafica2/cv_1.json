@@ -1,0 +1,22 @@
+{
+    "DatiPersonali": {
+      "Nome": "Luigi",
+      "Cognome": "Verdi",
+      "Indirizzo": "Via Purcesi 9",
+      "Città": "Novate Milanese",
+      "Telefono": "3146556783",
+      "Email": "luigi.verdi@example.com",
+      "Immagine": "https://pbs.twimg.com/profile_images/68512960/MP6_Luigi_400x400.jpg"
+    },
+    "Esperienze": [
+      "Assistente amministrativo presso ABC Spa (2021 - presente)"
+    ],
+    "Formazione": [
+      "Diploma Tecnico Commerciale, Istituto Verdi (2019)"
+    ],
+    "Competenze": [
+      "Gestione amministrativa",
+      "Pacchetto Office avanzato"
+    ]
+  }
+  

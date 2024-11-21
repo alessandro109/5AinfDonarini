@@ -1,0 +1,22 @@
+{
+    "DatiPersonali": {
+      "Nome": "Anna",
+      "Cognome": "Bianchi",
+      "Indirizzo": "Via dei Fanti 98",
+      "Città": "Pogliano Milanese ",
+      "Telefono": "3169485054",
+      "Email": "Anna.bianchi@gmail.com",
+      "Immagine": "https://magicdreams.store/cdn/shop/files/action-figure-anna-18-cm-frozen-magic-dreams-store.jpg?v=1707292069"
+    },
+    "Esperienze": [
+      "Assistente amministrativo presso ABC Spa (2021 - presente)"
+    ],
+    "Formazione": [
+      "Diploma Tecnico Commerciale, Istituto Verdi (2019)"
+    ],
+    "Competenze": [
+      "Gestione amministrativa",
+      "Pacchetto Office avanzato"
+    ]
+  }
+  

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curriculum</title>
+    <link rel="stylesheet" href="styleCv.css">
+</head>
+<body>
+    <div id="intestazione"></div>
+    <div id="contenutoCV"></div>
+
+    <script>
+        function caricaDatiCV() {
+            let indice = localStorage.getItem("Indice");
+            if (!indice) {
+                document.getElementById("contenutoCV").innerHTML = "<p>Nessun dato disponibile.</p>";
+                return;
+            }
+        
+            let fileJSON = "cv_" + indice + ".json";
+        
+            var file = new XMLHttpRequest();
+            file.open("GET", fileJSON, true);
+            file.send();
+            file.onreadystatechange = function () {
+                if (this.readyState === 4 && this.status === 200) {
+                    let jsonDoc = JSON.parse(file.responseText);
+                    console.log(jsonDoc);  // Log per verificare il contenuto del JSON
+                    mostraInfoCV(jsonDoc);
+                } else if (this.readyState === 4) {
+                    document.getElementById("contenutoCV").innerHTML = "<p>Errore nel caricamento del file.</p>";
+                }
+            };
+        }
+
+        function mostraInfoCV(ogg) {
+            const intestazione = document.getElementById("intestazione");
+            const contenutoCV = document.getElementById("contenutoCV");
+
+            intestazione.innerHTML = '';
+            contenutoCV.innerHTML = '';
+
+            let immagine = document.createElement("img");
+            immagine.src = ogg.DatiPersonali.Immagine || "";
+            intestazione.appendChild(immagine);
+
+            let nominativo = document.createElement("h1");
+            nominativo.textContent = ogg.DatiPersonali.Nome + " " + ogg.DatiPersonali.Cognome;
+            intestazione.appendChild(nominativo);
+
+            let contatti = document.createElement("p");
+            contatti.innerHTML = 
+                "<strong>Indirizzo:</strong> " + ogg.DatiPersonali.Indirizzo + "<br>" +
+                "<strong>Città:</strong> " + ogg.DatiPersonali.Città + "<br>" +
+                "<strong>Telefono:</strong> " + ogg.DatiPersonali.Telefono + "<br>" +
+                "<strong>Email:</strong> " + (ogg.DatiPersonali.Email || "Non disponibile");
+            intestazione.appendChild(contatti);
+
+            if (ogg.Formazione && ogg.Formazione.length > 0) {
+                let sezioneFormazione = creaSezione("Istruzione e formazione", ogg.Formazione);
+                contenutoCV.appendChild(sezioneFormazione);
+            } else {
+                let sezioneFormazione = creaSezione("Istruzione e formazione", ["Nessun dato disponibile."]);
+                contenutoCV.appendChild(sezioneFormazione);
+            }
+
+            if (ogg.Esperienze && ogg.Esperienze.length > 0) {
+                let sezioneEsperienze = creaSezione("Esperienze lavorative", ogg.Esperienze);
+                contenutoCV.appendChild(sezioneEsperienze);
+            } else {
+                let sezioneEsperienze = creaSezione("Esperienze lavorative", ["Nessun dato disponibile."]);
+                contenutoCV.appendChild(sezioneEsperienze);
+            }
+
+            if (ogg.Competenze && ogg.Competenze.length > 0) {
+                let sezioneCompetenze = creaSezione("Competenze", ogg.Competenze);
+                contenutoCV.appendChild(sezioneCompetenze);
+            } else {
+                let sezioneCompetenze = creaSezione("Competenze", ["Nessun dato disponibile."]);
+                contenutoCV.appendChild(sezioneCompetenze);
+            }
+        }
+
+        function creaSezione(titolo, contenuto) {
+            let sezione = document.createElement("div");
+            sezione.classList.add("sezione");
+
+            let titoloSezione = document.createElement("h2");
+            titoloSezione.textContent = titolo;
+            sezione.appendChild(titoloSezione);
+
+            if (contenuto && contenuto.length > 0) {
+                contenuto.forEach(function(item) {
+                    let paragrafo = document.createElement("p");
+                    paragrafo.textContent = item;
+                    sezione.appendChild(paragrafo);
+                });
+            } else {
+                let paragrafo = document.createElement("p");
+                paragrafo.textContent = "Nessun dato disponibile.";
+                sezione.appendChild(paragrafo);
+            }
+
+            return sezione;
+        }
+
+        document.addEventListener("DOMContentLoaded", caricaDatiCV);
+    </script>
+</body>
+</html>

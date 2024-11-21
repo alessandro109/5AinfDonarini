@@ -1,0 +1,79 @@
+body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        #contenutoCV, #intestazione {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #fff;
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Immagine e intestazione */
+        #intestazione {
+            text-align: center;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+
+        #intestazione img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        #intestazione h1 {
+            font-size: 1.8em;
+            margin: 10px 0;
+            color: #007bff;
+        }
+
+        #intestazione p {
+            font-size: 0.9em;
+            color: #555;
+        }
+
+        /* Sezioni principali */
+        .sezione {
+            margin-bottom: 30px;
+        }
+
+        .sezione h2 {
+            font-size: 1.4em;
+            color: #333;
+            border-bottom: 1px solid #007bff;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+        }
+
+        .sezione p {
+            margin: 5px 0;
+        }
+
+        /* Liste ordinate o puntate */
+        .sezione ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        .sezione ul li {
+            margin: 5px 0;
+        }
+
+        /* Link */
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
