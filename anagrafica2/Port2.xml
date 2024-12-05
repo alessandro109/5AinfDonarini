@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<utente id="2">
+        <lavoro>
+            <titolo>Software di Analisi dei Dati</titolo>
+            <abstract>Un software per analizzare grandi quantità di dati e generare report dettagliati.</abstract>
+            <link>https://example.com/analisiDati</link>
+        </lavoro>
+        <lavoro>
+            <titolo>Sistema di Gestione Documentale</titolo>
+            <abstract>Una soluzione digitale per l'archiviazione e la gestione dei documenti aziendali.</abstract>
+            <link>https://example.com/gestioneDocumenti</link>
+        </lavoro>
+        <lavoro>
+            <titolo>Piattaforma per Eventi Virtuali</titolo>
+            <abstract>Una piattaforma per organizzare e gestire eventi virtuali su larga scala.</abstract>
+            <link>https://example.com/eventiVirtuali</link>
+        </lavoro>
+    </utente>

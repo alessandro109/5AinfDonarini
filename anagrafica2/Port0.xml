@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<utente id="0">
+        <lavoro>
+            <titolo>Gestione Inventario</titolo>
+            <abstract>Un'applicazione per monitorare e gestire l'inventario aziendale in tempo reale.</abstract>
+            <link>https://example.com/gestioneInventario</link>
+        </lavoro>
+        <lavoro>
+            <titolo>Piattaforma di Prenotazioni</titolo>
+            <abstract>Un sistema avanzato per la prenotazione di servizi e appuntamenti.</abstract>
+            <link>https://example.com/prenotazioni</link>
+        </lavoro>
+    </utente>

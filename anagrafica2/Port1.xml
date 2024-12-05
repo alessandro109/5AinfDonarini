@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<utente id="1">
+        <lavoro>
+            <titolo>App di Viaggio</titolo>
+            <abstract>Un'app mobile per la pianificazione di itinerari di viaggio e prenotazioni.</abstract>
+            <link>https://example.com/appViaggio</link>
+        </lavoro>
+        <lavoro>
+            <titolo>Piattaforma per Corsi Online</titolo>
+            <abstract>Una piattaforma educativa per la creazione e gestione di corsi online.</abstract>
+            <link>https://example.com/corsiOnline</link>
+        </lavoro>
+    </utente>
